@@ -1,0 +1,82 @@
+:root {
+  --bg: #e9eff0;
+  --surface: #ffffff;
+  --ink: #12262b;
+  --muted: #516368;
+  --line: #cbd8da;
+  --teal: #0b6b66;
+  --amber: #a85a00;
+  --danger: #b3261e;
+  --high: #b3261e;
+  --medium: #a85a00;
+  --low: #2f6f4e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  line-height: 1.5;
+}
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; }
+
+.app { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.app-header { display: grid; gap: 1.25rem; margin-bottom: 1.5rem; }
+
+.summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 0; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0.9rem 1rem; }
+.stat dd { margin: 0; font-size: clamp(1.8rem, 6vw, 2.8rem); font-weight: 800; line-height: 1; }
+.stat dt { color: var(--muted); font-size: 0.9rem; margin-top: 0.35rem; }
+.stat-pending dd { color: var(--amber); }
+.stat-done dd { color: var(--teal); }
+
+.layout { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .layout { grid-template-columns: 340px 1fr; align-items: start; } }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem; }
+.list-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 1rem; }
+.list-head h2 { margin: 0; }
+
+.form { display: grid; gap: 0.9rem; }
+.form label { display: grid; gap: 0.3rem; font-weight: 600; font-size: 0.95rem; }
+.optional { font-weight: 400; color: var(--muted); }
+input, textarea, select {
+  font: inherit; padding: 0.6rem 0.7rem; border: 1px solid #93a8ab; border-radius: 8px; background: #fff; color: var(--ink); width: 100%;
+}
+input[aria-invalid="true"] { border-color: var(--danger); }
+.error { color: var(--danger); font-size: 0.9rem; margin-top: -0.4rem; }
+
+.btn {
+  font: inherit; font-weight: 600; padding: 0.55rem 0.9rem; min-height: 44px; border-radius: 8px;
+  border: 1px solid #93a8ab; background: #fff; color: var(--ink); cursor: pointer;
+}
+.btn:hover { background: #f0f5f5; }
+.btn-primary { background: var(--teal); border-color: var(--teal); color: #fff; }
+.btn-primary:hover { background: #09524e; }
+.btn-danger { color: var(--danger); border-color: #e0b4b0; }
+.btn-danger:hover { background: #fdf1f0; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
+
+.filters { display: flex; gap: 0.4rem; }
+.chip { font: inherit; padding: 0.4rem 0.9rem; min-height: 40px; border-radius: 999px; border: 1px solid #93a8ab; background: #fff; cursor: pointer; }
+.chip-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+.task-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.task { display: grid; gap: 0.75rem; padding: 1rem; border: 1px solid var(--line); border-left: 6px solid var(--medium); border-radius: 8px; }
+.priority-high { border-left-color: var(--high); }
+.priority-medium { border-left-color: var(--medium); }
+.priority-low { border-left-color: var(--low); }
+.task h3 { font-size: 1.1rem; }
+.task p { color: var(--muted); margin-top: 0.2rem; overflow-wrap: anywhere; }
+.task-done h3 { text-decoration: line-through; color: var(--muted); }
+.meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+.badge { font-size: 0.8rem; font-weight: 600; padding: 0.15rem 0.6rem; border-radius: 999px; background: #eef2f2; }
+.badge-pending { background: #fdeccf; color: #7a4100; }
+.badge-done { background: #d3efe9; color: #07514d; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+@media (min-width: 560px) { .task { grid-template-columns: 1fr auto; align-items: center; } }
+
+.empty { text-align: center; color: var(--muted); padding: 2rem 1rem; border: 1px dashed #93a8ab; border-radius: 8px; }
